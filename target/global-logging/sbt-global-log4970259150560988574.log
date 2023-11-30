@@ -1,0 +1,122 @@
+[debug] > Exec(early(addDefaultCommands), None, None)
+[debug] > Exec(addDefaultCommands, None, None)
+[debug] > Exec(early(initialize), None, None)
+[debug] > Exec(initialize, None, None)
+[debug] > Exec(boot, None, None)
+[debug] > Exec(writeSbtVersion, None, None)
+[debug] > Exec(reload, None, None)
+[debug] > Exec(sbtStashOnFailure, None, None)
+[debug] > Exec(onFailure loadFailed, None, None)
+[debug] > Exec(loadp, None, None)
+[info] welcome to sbt 1.9.7 (Oracle Corporation Java 19.0.1)
+[debug]       Load.loadUnit: plugins took 96.8387ms
+[debug]       Load.loadUnit: defsScala took 0.6253ms
+[debug] [Loading] Scanning directory C:\Users\Жандарбек\.sbt\1.0\plugins
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in C:\Users\Жандарбек\.sbt\1.0\plugins, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 20.354 ms
+[debug]           Load.resolveProject(global-plugins) took 43.1123ms
+[debug]         Load.loadTransitive: finalizeProject(Project(id global-plugins, base: C:\Users\Жандарбек\.sbt\1.0\plugins, plugins: List(<none>))) took 90.4182ms
+[debug] [Loading] Done in C:\Users\Жандарбек\.sbt\1.0\plugins, returning: (global-plugins)
+[debug]       Load.loadUnit: loadedProjectsRaw took 123.2378ms
+[debug]       Load.loadUnit: cleanEvalClasses took 0.4221ms
+[debug]     Load.loadUnit(file:/C:/Users/Жандарбек/.sbt/1.0/plugins/, ...) took 233.6686ms
+[debug]   Load.apply: load took 461.9452ms
+[debug]   Load.apply: resolveProjects took 11.2615ms
+[debug]   Load.apply: finalTransforms took 106.1031ms
+[debug]   Load.apply: config.delegates took 6.7827ms
+[debug]   Load.apply: Def.make(settings)... took 372.2529ms
+[debug]   Load.apply: structureIndex took 84.7752ms
+[debug]   Load.apply: mkStreams took 1.4649ms
+[info] loading global plugins from C:\Users\Жандарбек\.sbt\1.0\plugins
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug] Load.defaultLoad until apply took 2160.7495ms
+[debug]           Load.loadUnit: plugins took 18.2519ms
+[debug]           Load.loadUnit: defsScala took 0.0037ms
+[debug] [Loading] Scanning directory C:\Users\Жандарбек\OneDrive\Рабочий стол\ООП4 Ф\SkalaP\Library\project
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in C:\Users\Жандарбек\OneDrive\Рабочий стол\ООП4 Ф\SkalaP\Library\project, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 1.5097 ms
+[debug]               Load.resolveProject(library-build) took 1.0939ms
+[debug]             Load.loadTransitive: finalizeProject(Project(id library-build, base: C:\Users\Жандарбек\OneDrive\Рабочий стол\ООП4 Ф\SkalaP\Library\project, plugins: List(<none>))) took 3.0677ms
+[debug] [Loading] Done in C:\Users\Жандарбек\OneDrive\Рабочий стол\ООП4 Ф\SkalaP\Library\project, returning: (library-build)
+[debug]           Load.loadUnit: loadedProjectsRaw took 4.7111ms
+[debug]           Load.loadUnit: cleanEvalClasses took 0.0097ms
+[debug]         Load.loadUnit(file:/C:/Users/Жандарбек/OneDrive/Рабочий%20стол/ООП4%20Ф/SkalaP/Library/project/, ...) took 23.8124ms
+[debug]       Load.apply: load took 25.1056ms
+[debug]       Load.apply: resolveProjects took 0.0956ms
+[debug]       Load.apply: finalTransforms took 20.2749ms
+[debug]       Load.apply: config.delegates took 0.3365ms
+[debug]       Load.apply: Def.make(settings)... took 72.7547ms
+[debug]       Load.apply: structureIndex took 23.5874ms
+[debug]       Load.apply: mkStreams took 0.0031ms
+[info] loading project definition from C:\Users\Жандарбек\OneDrive\Рабочий стол\ООП4 Ф\SkalaP\Library\project
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug]     Load.loadUnit: plugins took 359.4255ms
+[debug]     Load.loadUnit: defsScala took 0.0027ms
+[debug] [Loading] Scanning directory C:\Users\Жандарбек\OneDrive\Рабочий стол\ООП4 Ф\SkalaP\Library
+[debug]       Load.loadUnit: mkEval took 4.0775ms
+[debug] [Loading] Found root project root w/ remaining 
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 1.32 ms
+[info] loading settings for project root from build.sbt ...
+[debug]         Load.resolveProject(root) took 2.8606ms
+[debug]       Load.loadTransitive: finalizeProject(Project(id root, base: C:\Users\Жандарбек\OneDrive\Рабочий стол\ООП4 Ф\SkalaP\Library, plugins: List(<none>))) took 5.1552ms
+[debug] [Loading] Done in C:\Users\Жандарбек\OneDrive\Рабочий стол\ООП4 Ф\SkalaP\Library, returning: (root)
+[debug]     Load.loadUnit: loadedProjectsRaw took 168.5491ms
+[debug]     Load.loadUnit: cleanEvalClasses took 19.6724ms
+[debug]   Load.loadUnit(file:/C:/Users/Жандарбек/OneDrive/Рабочий%20стол/ООП4%20Ф/SkalaP/Library/, ...) took 548.5482ms
+[debug] Load.apply: load took 550.2868ms
+[debug] Load.apply: resolveProjects took 0.114ms
+[debug] Load.apply: finalTransforms took 9.066ms
+[debug] Load.apply: config.delegates took 0.3192ms
+[debug] Load.apply: Def.make(settings)... took 51.2319ms
+[debug] Load.apply: structureIndex took 19.6997ms
+[debug] Load.apply: mkStreams took 0.0025ms
+[info] set current project to Library (in build file:/C:/Users/Жандарбек/OneDrive/Рабочий%20стол/ООП4%20Ф/SkalaP/Library/)
+[debug] > Exec(sbtPopOnFailure, None, None)
+[debug] > Exec(resumeFromFailure, None, None)
+[debug] > Exec(notifyUsersAboutShell, None, None)
+[debug] > Exec(iflast shell, None, None)
+[debug] > Exec(shell, None, None)
+[info] sbt server started at local:sbt-server-12b023b9a2b13394e015
+[debug] Writing bsp connection file
+[warn] sbt server could not start in 10s
