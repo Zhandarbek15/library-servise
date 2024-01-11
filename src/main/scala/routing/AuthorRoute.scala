@@ -93,7 +93,7 @@ class AuthorRoute(implicit val authorRepo: AuthorRepository,val bookRepo:BookRep
           delete {
             onComplete(authorRepo.deleteAuthor(authorId)) {
               case Success(deletedAuthorId) =>
-                complete(StatusCodes.OK, s"ID удаленного автора: $deletedAuthorId")
+                complete(StatusCodes.OK, s"Число удаленных строк: $deletedAuthorId")
               case Failure(ex) =>
                 complete(StatusCodes.InternalServerError, s"Ошибка в коде: ${ex.getMessage}")
             }

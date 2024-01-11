@@ -98,5 +98,4 @@ trait JsonSupport extends SprayJsonSupport with DefaultJsonProtocol {
   implicit val fictionBookFormat: RootJsonFormat[FictionBook] = jsonFormat12(FictionBook)
   implicit val scientificBookFormat: RootJsonFormat[ScientificBook] = jsonFormat12(ScientificBook)
   implicit val bookUpdateFormat: RootJsonFormat[BookUpdate] = jsonFormat13(BookUpdate)
-
 }

@@ -78,7 +78,6 @@ class UserRoute(implicit val userRepo: UserRepository, val bookRepo:BookReposito
               val bookIds = updatedUser.booksBorrowed.getOrElse(List.empty)
               onComplete(bookRepo.checkBooksExist(bookIds)) {
                 case Success(true) =>
-                  // Все книги существуют, продолжаем обнавление пользователя
                   onComplete(userRepo.updateUser(userId, updatedUser)) {
                     case Success(updatedUserId) =>
                       complete(StatusCodes.OK, updatedUserId)
