@@ -29,12 +29,6 @@ class BookRepository(implicit db: MongoDatabase) {
     val update = push("books", newBookId)
 
     collection.updateOne(filter, update)
-    println("Новый кітап авторға тіркелді")
-  }
-
-  def doesBookExist(bookId: String)(implicit ec: ExecutionContext): Future[Boolean] = {
-    val objectId = new ObjectId(bookId)
-    collection.find(equal("_id", objectId)).headOption().map(_.isDefined)
   }
 
   def checkBooksExist(bookIds: List[String])(implicit ec: ExecutionContext): Future[Boolean] = {
@@ -71,7 +65,7 @@ class BookRepository(implicit db: MongoDatabase) {
 
   def deleteBook(bookId: String)(implicit ec: ExecutionContext): Future[String] = {
     val objectId = new org.bson.types.ObjectId(bookId)
-    collection.deleteOne(equal("_id", objectId)).toFuture().map(_ => "Книга успешно удалена")
+    collection.deleteOne(equal("_id", objectId)).toFuture().map(_ =>  "Книга успешно удалена")
   }
 
   def updateBook(bookId: String, updatedBook: BookUpdate)(implicit ec: ExecutionContext): Future[String] = {

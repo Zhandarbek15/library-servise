@@ -30,11 +30,6 @@ class UserRepository(implicit db:MongoDatabase) {
     collection.find(equal("_id", objectId)).headOption().map(_.flatMap(docToUser))
   }
 
-  def doesBookExist(userId: String)(implicit ec: ExecutionContext): Future[Boolean] = {
-    val objectId = new ObjectId(userId)
-    collection.find(equal("_id", objectId)).headOption().map(_.isDefined)
-  }
-
   // Create
   def addUser(user: User)(implicit ec: ExecutionContext): Future[String] = {
     val document = Document(

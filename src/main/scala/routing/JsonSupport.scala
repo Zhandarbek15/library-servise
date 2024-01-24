@@ -3,6 +3,7 @@ package routing
 import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
 import spray.json._
 import domain._
+import repositories.getFields
 
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -82,14 +83,16 @@ trait JsonSupport extends SprayJsonSupport with DefaultJsonProtocol {
 
     override def read(json: JsValue): Book = {
       val bookType = json.asJsObject.fields("bookType").convertTo[String]
-      val book = bookType match {
-        case "TextBook" => textBookFormat.read(json)
-        case "FictionBook" => fictionBookFormat.read(json)
-        case "ScientificBook" => scientificBookFormat.read(json)
-        case _ => throw DeserializationException("Не правильный тип книги! " +
+      bookType match {
+        case "TextBook" if getFields(classOf[TextBook],"_id") == json.asJsObject.fields.keys.toSet
+        => textBookFormat.read(json)
+        case "FictionBook" if getFields(classOf[FictionBook],"_id") == json.asJsObject.fields.keys.toSet
+        => fictionBookFormat.read(json)
+        case "ScientificBook" if getFields(classOf[ScientificBook],"_id") == json.asJsObject.fields.keys.toSet
+        => scientificBookFormat.read(json)
+        case _ => throw DeserializationException("Не правильный тип книги или неправильно указаны поля!" +
           "Допустимые типы: TextBook, FictionBook, ScientificBook")
       }
-      book.asInstanceOf[Book]
     }
   }
 

@@ -4,32 +4,25 @@ import akka.http.scaladsl.model.StatusCodes
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.Route
 import domain._
-import repositories.{AuthorRepository, BookRepository}
+import repositories.{AuthorRepository, BookRepository, getFields}
 
 import scala.concurrent.ExecutionContext
 import scala.util.{Failure, Success}
 
 class BookRoute(implicit val bookRepo: BookRepository, val authorRepo:AuthorRepository, val ex:ExecutionContext)
   extends JsonSupport {
-
-  private val fields: List[String] = List(
-    "name",
-    "author",
-    "language",
-    "subject",
-    "genre",
-    "typeOfWork"
-  )
+  // Добавление возможных полей в множество fields
+  private val fields: Set[String] =
+    getFields(classOf[ScientificBook]) ++ getFields(classOf[FictionBook]) ++ getFields(classOf[TextBook])
 
   val route: Route = pathPrefix("books") {
     pathEndOrSingleSlash {
       (get & parameters("field", "parameter")) {
         (field, parameter) => {
-          if (!fields.contains(field)) {
-            complete(StatusCodes.BadRequest,
-              s"Вы ввели неправильный имя поля таблицы! Допустимые поля: ${fields.mkString(", ")}")
-          }
-          else {
+          validate(
+            fields.contains(field),
+            s"Вы ввели неправильный имя поля таблицы! Допустимые поля: ${fields.mkString(", ")}")
+          {
             val convertedParameter = if (parameter.matches("-?\\d+")) parameter.toInt else parameter
             onComplete(bookRepo.customFilter(field, convertedParameter)) {
               case Success(queryResponse) => complete(StatusCodes.OK, queryResponse)
@@ -41,9 +34,7 @@ class BookRoute(implicit val bookRepo: BookRepository, val authorRepo:AuthorRepo
       } ~
       get {
         onComplete(bookRepo.getAllBooks()) {
-          case Success(result) =>
-            val bookList = result
-            complete(StatusCodes.OK, bookList)
+          case Success(result) => complete(StatusCodes.OK, result)
           case Failure(ex) => complete(StatusCodes.InternalServerError, s"Ошибка в коде: ${ex.getMessage}")
         }
       } ~
@@ -86,8 +77,7 @@ class BookRoute(implicit val bookRepo: BookRepository, val authorRepo:AuthorRepo
               onComplete(authorRepo.doesAuthorExist(updatedBook.author)) {
                 case Success(true) =>
                   onComplete(bookRepo.updateBook(bookId, updatedBook)) {
-                    case Success(updatedBookId) =>
-                      complete(StatusCodes.OK,s"ID обнавленной книги $updatedBookId")
+                    case Success(updatedBookMessage) => complete(StatusCodes.OK,s"$updatedBookMessage")
                     case Failure(ex) => complete(StatusCodes.InternalServerError, s"Ошибка в коде: ${ex.getMessage}")
                   }
                 case Success(false) =>

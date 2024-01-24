@@ -4,7 +4,7 @@ import akka.http.scaladsl.model.StatusCodes
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.Route
 import domain._
-import repositories.{AuthorRepository, BookRepository}
+import repositories.{AuthorRepository, BookRepository,getFields}
 
 import scala.concurrent.ExecutionContext
 import scala.util.{Failure, Success}
@@ -12,19 +12,14 @@ import scala.util.{Failure, Success}
 class AuthorRoute(implicit val authorRepo: AuthorRepository,val bookRepo:BookRepository, val ex: ExecutionContext)
   extends JsonSupport {
 
-  private val fields: List[String] = List(
-    "id",
-    "name",
-    "age",
-    "email"
-  )
+  private val fields: Set[String] = getFields(classOf[Author])
 
   val route: Route = pathPrefix("authors") {
     pathEndOrSingleSlash {
       (get & parameters("field", "parameter")) { (field, parameter) =>
-
         validate(fields.contains(field),
-          s"Вы ввели неправильное имя поля таблицы! Допустимые поля: ${fields.mkString(", ")}") {
+          s"Вы ввели неправильное имя поля таблицы! Допустимые поля: ${fields.mkString(", ")}")
+        {
           val convertedParameter = if (parameter.matches("-?\\d+")) parameter.toInt else parameter
           onComplete(authorRepo.customFilter(field, convertedParameter)) {
             case Success(queryResponse) =>
@@ -36,10 +31,8 @@ class AuthorRoute(implicit val authorRepo: AuthorRepository,val bookRepo:BookRep
       } ~
       get {
         onComplete(authorRepo.getAllAuthors()) {
-          case Success(result) =>
-            complete(StatusCodes.OK, result)
-          case Failure(ex) =>
-            complete(StatusCodes.InternalServerError, s"Ошибка в коде: ${ex.getMessage}")
+          case Success(result) => complete(StatusCodes.OK, result)
+          case Failure(ex) => complete(StatusCodes.InternalServerError, s"Ошибка в коде: ${ex.getMessage}")
         }
       } ~
         post {
@@ -65,8 +58,7 @@ class AuthorRoute(implicit val authorRepo: AuthorRepository,val bookRepo:BookRep
       path(Segment) { authorId =>
         get {
           onComplete(authorRepo.getAuthorById(authorId)) {
-            case Success(Some(author)) =>
-              complete(StatusCodes.OK, author)
+            case Success(Some(author)) => complete(StatusCodes.OK, author)
             case Success(None) => complete(StatusCodes.NotFound, s"Автора под ID $authorId не существует!")
             case Failure(ex) =>
               complete(StatusCodes.InternalServerError, s"Ошибка в коде: ${ex.getMessage}")
